@@ -1,0 +1,339 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "ckpt_name": "huslyorealismxl_v2.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "2": {
+        "inputs": {
+          "value": -2,
+          "clip": [
+            "1",
+            1
+          ]
+        },
+        "class_type": "CLIPSetLastLayer",
+        "_meta": {
+          "title": "CLIPSetLastLayer"
+        }
+      },
+      "3": {
+        "inputs": {
+          "text": "woman877, a 25-year-old French woman, light beige skin with natural freckles, thick jet blonde hair in a layered cut with soft waves, brown eyes, oval face, petite frame with a delicate waist. She is making a selfie outside in a park, wearing a pink sweater",
+          "clip": [
+            "21",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "4": {
+        "inputs": {
+          "text": "cartoon, illustration, anime, painting, CGI, 3D render, low quality, watermark, logo, label",
+          "clip": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "6": {
+        "inputs": {
+          "value": 768
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "7": {
+        "inputs": {
+          "samples": [
+            "10",
+            3
+          ],
+          "vae": [
+            "9",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "8": {
+        "inputs": {
+          "filename_prefix": "ComfyUI",
+          "images": [
+            "36",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "9": {
+        "inputs": {
+          "filename": "SDXL/sdxl_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "10": {
+        "inputs": {
+          "value": 856687343819439,
+          "model": [
+            "21",
+            0
+          ],
+          "positive": [
+            "3",
+            0
+          ],
+          "negative": [
+            "4",
+            0
+          ],
+          "latent_image": [
+            "6",
+            0
+          ],
+          "optional_vae": [
+            "9",
+            0
+          ]
+        },
+        "class_type": "KSampler (Efficient)",
+        "_meta": {
+          "title": "KSampler (Efficient)"
+        }
+      },
+      "21": {
+        "inputs": {
+          "filename": "Touch_of_Realism_SDXL_V2.safetensors",
+          "model": [
+            "1",
+            0
+          ],
+          "clip": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "Lora Loader Stack (rgthree)",
+        "_meta": {
+          "title": "Lora Loader Stack (rgthree)"
+        }
+      },
+      "22": {
+        "inputs": {
+          "value": 768,
+          "image": [
+            "7",
+            0
+          ],
+          "model": [
+            "10",
+            0
+          ],
+          "clip": [
+            "21",
+            1
+          ],
+          "vae": [
+            "10",
+            4
+          ],
+          "positive": [
+            "10",
+            1
+          ],
+          "negative": [
+            "10",
+            2
+          ],
+          "bbox_detector": [
+            "23",
+            0
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "FaceDetailer"
+        }
+      },
+      "23": {
+        "inputs": {
+          "filename": "bbox/face_yolov8m.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "24": {
+        "inputs": {
+          "images": [
+            "22",
+            2
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "25": {
+        "inputs": {
+          "value": 768,
+          "image": [
+            "22",
+            0
+          ],
+          "model": [
+            "10",
+            0
+          ],
+          "clip": [
+            "21",
+            1
+          ],
+          "vae": [
+            "10",
+            4
+          ],
+          "positive": [
+            "10",
+            1
+          ],
+          "negative": [
+            "10",
+            2
+          ],
+          "bbox_detector": [
+            "26",
+            0
+          ],
+          "sam_model_opt": [
+            "27",
+            0
+          ],
+          "segm_detector_opt": [
+            "26",
+            1
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "FaceDetailer"
+        }
+      },
+      "26": {
+        "inputs": {
+          "filename": "bbox/PitEyeDetailer-v2-seg.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "27": {
+        "inputs": {
+          "filename": "sam_vit_b_01ec64.pth"
+        },
+        "class_type": "SAMLoader",
+        "_meta": {
+          "title": "SAMLoader"
+        }
+      },
+      "28": {
+        "inputs": {
+          "images": [
+            "25",
+            2
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "33": {
+        "inputs": {
+          "model_name": "4x_foolhardy_Remacri.pth"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "34": {
+        "inputs": {
+          "upscale_model": [
+            "33",
+            0
+          ],
+          "image": [
+            "25",
+            0
+          ]
+        },
+        "class_type": "ImageUpscaleWithModel",
+        "_meta": {
+          "title": "ImageUpscaleWithModel"
+        }
+      },
+      "35": {
+        "inputs": {
+          "images": [
+            "25",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "36": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "34",
+            0
+          ]
+        },
+        "class_type": "ImageScaleBy",
+        "_meta": {
+          "title": "ImageScaleBy"
+        }
+      },
+      "47": {
+        "inputs": {
+          "value": null
+        },
+        "class_type": "LoraLoader|pysssss",
+        "_meta": {
+          "title": "LoraLoader|pysssss"
+        }
+      }
+    }
+  }
+}
