@@ -17,7 +17,7 @@ RUN comfy model download --url https://huggingface.co/FacehugmanIII/4x_foolhardy
 RUN comfy model download --url https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth --relative-path models/diffusion_models --filename sam_vit_b_01ec64.pth
 
 # ✅ 1. SDXL VAE - Official Stability AI version
-RUN comfy model download --url https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors --relative-path models/vae --filename sdxl_vae.safetensors
+RUN comfy model download --url https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors --relative-path models/vae/SDXL --filename sdxl_vae.safetensors
 
 # ✅ 2. PitEyeDetailer-v2-seg.pt - Eye detail detection model
 RUN comfy model download --url https://huggingface.co/Outimus/Adetailer/resolve/main/PitEyeDetailer-v2-seg.pt --relative-path models/ultralytics/bbox --filename PitEyeDetailer-v2-seg.pt
